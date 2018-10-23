@@ -3,11 +3,8 @@ from newspaper import Article
 #크롤링할 뉴스 주소 입력
 url = "https://news.v.daum.net/v/20170604205121164"
 #언어가 한국어이므로 language='ko'로 설정
-headers = {
-    'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
-}
 
-news = Article(url, language='ko', headers = headers)
+news = Article(url, language='ko')
 news.download()
 news.parse
 

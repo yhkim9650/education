@@ -49,3 +49,5 @@ for tr in soup.select('tr'):
         tr.select_one('td[class=salesAmt]').text,
         tr.select_one('td[class=audiCnt]').text
         )
+#순위 (rank) 신규진입여부 (rankOldAndNew) 영화코드 (movieCd) 영화명 (movieNm) 매출액 (salesAmt) 관객수 (audiCnt)
+#1 OLD 20170561 블랙 팬서 1339822000 171158
