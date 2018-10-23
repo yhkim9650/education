@@ -8,6 +8,10 @@ from itertools import count
 sys.stdout = io.TextIOWrapper(sys.stdout.detach(), encoding = 'utf-8')
 sys.stderr = io.TextIOWrapper(sys.stderr.detach(), encoding = 'utf-8')
 
+headers = {
+    'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+}
+
 def naverSrc_cralwler(src_word, max_page):
     url = "https://search.naver.com/search.naver"
     post_dict = OrderedDict() #OrderedDict를 사용하며, key에 url을 넣겠습니다.
@@ -19,9 +23,6 @@ def naverSrc_cralwler(src_word, max_page):
             'query':src_word,
             'where':'post',
             'start':(page-1)*10+1
-        }
-        headers = {
-            'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
         }
         response = requests.get(url, params = param, headers = headers)
         html = response.text
@@ -45,4 +46,4 @@ def naverSrc_cralwler(src_word, max_page):
 
 #실행
 if __name__ == '__main__':
-    naverSrc_cralwler('빅데이터', 7)
+    naverSrc_cralwler('류현진', 7)
