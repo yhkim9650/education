@@ -15,12 +15,15 @@ def naverNewsSrc_cralwler(src_word, max_page):
     f = open('e:/imagedown/뉴스검색결과.txt', 'wt', encoding='utf-8')
     i = 1
     for page in count(1): #1부터 무한대로 시작(break or return이 나올때까지)
+        headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+        }
         param = {
             'query':src_word,
             'where':'news',
             'start':(page-1)*10+1
         }
-        response = requests.get(url, params = param)
+        response = requests.get(url, headers = headers, params = param)
         html = response.text
 
         soup = BeautifulSoup(html, "html.parser")
@@ -42,4 +45,4 @@ def naverNewsSrc_cralwler(src_word, max_page):
 
 #실행
 if __name__ == '__main__':
-    naverNewsSrc_cralwler('류현진', 5)
+    naverNewsSrc_cralwler('류현진', 7)

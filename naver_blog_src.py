@@ -20,7 +20,10 @@ def naverSrc_cralwler(src_word, max_page):
             'where':'post',
             'start':(page-1)*10+1
         }
-        response = requests.get(url, params = param)
+        headers = {
+            'user-agent': 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36'
+        }
+        response = requests.get(url, params = param, headers = headers)
         html = response.text
 
         soup = BeautifulSoup(html, "html.parser")
@@ -42,4 +45,4 @@ def naverSrc_cralwler(src_word, max_page):
 
 #실행
 if __name__ == '__main__':
-    naverSrc_cralwler('태양광', 3)
+    naverSrc_cralwler('빅데이터', 7)
