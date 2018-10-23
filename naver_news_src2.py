@@ -37,18 +37,18 @@ def naverNewsSrc_cralwler(src_word, max_page):
         html = response.text
 
         soup = BeautifulSoup(html, "html.parser")
-        titleList = soup.select("._sp_each_title")
+        titleList = soup.select(".type01 > li")
         #print(titleList)
 
-        for srcList in titleList:
+        for li in titleList:
             if max_page and (page > max_page):
                 return post_dict
-            if srcList['href'] in post_dict: #지금 저장할 링크(key)가 이미 post_dict에 있다면
+            if li.dl.dt.a['href'] in post_dict: #지금 저장할 링크(key)가 이미 post_dict에 있다면
                 return post_dict #리턴해서 끝내버린다.
-            print(i, srcList.text, srcList['href'])
+            print(i, li.dl.dt.a.text, li.dl.dt.a['href'])
             #news = getTextArea(srcList['href'])#본문 읽어올 함수
-            f.write(str(i) + ' ' + srcList.text + ' - ' + srcList['href'] + '\n')
-            post_dict[srcList['href']] = srcList['href']
+            f.write(str(i) + ' ' + li.dl.dt.a.text + ' - ' + li.dl.dt.a['href'] + '\n')
+            post_dict[li.dl.dt.a['href']] = li.dl.dt.a['href']
             i += 1
 
     return post_dict

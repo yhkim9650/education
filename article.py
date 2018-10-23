@@ -19,4 +19,4 @@ text = ''
 for p in news:
     text = text + p.text
 
-print(text).replace("<p>","")
+print(text)
